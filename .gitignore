@@ -1,4 +1,3 @@
 # Ignoroi kaikki .alkuiset tiedostot ja kansiot
 .*
-# Poikkeukset
-!README.md
+node_modules
