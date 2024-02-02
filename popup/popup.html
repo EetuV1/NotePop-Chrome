@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NotePop!</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <img src="../assets/notepopLogo400.png" class="logo" />
+            </div>
+
+            <!-- "Note added successfully! -notification" -->
+            <div class="notification" id="notification"></div>
+
+            <div class="getFullVersionNotificationContainer">
+                <div
+                    class="getFullVersionNotification"
+                    id="getFullVersionNotification"
+                >
+                    <h2>
+                        You have reached the maximum number of notes in this
+                        <u>free version</u>.
+                    </h2>
+
+                    <p>
+                        You can get the full version for $2.99 or delete your
+                        old notes.
+                    </p>
+                    <p>Press 'Show All Notes' for more info.</p>
+                </div>
+            </div>
+
+            <form class="form" id="form">
+                <div class="form-keyword">
+                    <input
+                        type="input"
+                        class="form-field"
+                        id="keyword-input"
+                        name="keyword-input"
+                        placeholder="Keyword"
+                        autocomplete="off"
+                        required
+                    />
+                    <label for="keyword-input" class="form-label"
+                        >Keyword</label
+                    >
+                </div>
+
+                <div class="form-note">
+                    <input
+                        type="input"
+                        class="form-field"
+                        id="note-input"
+                        name="note-input"
+                        autocomplete="off"
+                        placeholder="Note"
+                    />
+                    <label for="note-input" class="form-label">Note</label>
+                </div>
+
+                <div class="form-checkboxes">
+                    <label for="showOnce">
+                        <input type="checkbox" id="showOnce" />
+                        Show Once
+                    </label>
+
+                    <label for="counter">
+                        <input type="checkbox" id="counter" />
+                        Add Counter
+                    </label>
+                </div>
+
+                <div class="form-btns">
+                    <input type="submit" value="Add Note" />
+                </div>
+            </form>
+
+            <div class="lastSection">
+                <button id="show-all-notes-btn">Show All Notes</button>
+            </div>
+        </div>
+    </body>
+    <script type="module" src="popup.js"></script>
+</html>

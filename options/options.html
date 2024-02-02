@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>NotePop!</title>
+        <link rel="stylesheet" href="options.css" />
+        <link rel="icon" href="../assets/32.png" type="image/png" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <img src="../assets/notepopLogo400.png" class="logo" />
+            </div>
+
+            <h3 class="addNewNote">Add a New Note</h3>
+
+            <form class="form" id="form">
+                <div class="form-items">
+                    <div class="form-keyword">
+                        <input
+                            type="input"
+                            class="form-field"
+                            id="keyword-input"
+                            name="keyword-input"
+                            placeholder="Keyword"
+                            autocomplete="off"
+                            required
+                        />
+                        <label for="keyword-input" class="form-label"
+                            >Keyword</label
+                        >
+                    </div>
+
+                    <div class="form-note">
+                        <input
+                            type="input"
+                            class="form-field"
+                            id="note-input"
+                            name="note-input"
+                            placeholder="Note"
+                            autocomplete="off"
+                        />
+                        <label for="note-input" class="form-label">Note</label>
+                    </div>
+
+                    <div class="form-checkboxes">
+                        <div class="showOnce-div">
+                            <input type="checkbox" id="showOnce" />
+                            <label for="showOnce">Show Once</label>
+                        </div>
+
+                        <div class="counter-div">
+                            <input type="checkbox" id="counter" />
+                            <label for="counter">Add Counter</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-form">
+                    <input class="addNoteBtn" type="submit" value="Add Note" />
+                </div>
+            </form>
+
+            <div id="allNotesContainer" class="allNotesContainer">
+                <h3 class="allNotesTitle">All Notes:</h3>
+                <div id="allNotesListElement"></div>
+            </div>
+
+            <div class="getFullVersionContainer">
+                <div
+                    id="getFullVersionColorContainer"
+                    class="getFullVersionColorContainer"
+                >
+                    <div
+                        id="getFullVersionContainerText"
+                        class="getFullVersionContainerText"
+                    >
+                        <h1 class="getFullVersionText">
+                            Show some ❤️ by getting the full version of NotePop!
+                        </h1>
+
+                        <h3 class="getFullVersionTextPoints">
+                            ✅ Unlimited Notes
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </h3>
+                        <h3 class="getFullVersionTextPoints">
+                            ✅ Secure
+                            <a
+                                href="https://www.stripe.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Stripe Payment
+                            </a>
+                        </h3>
+                    </div>
+                    <div
+                        id="buyFullVersionBtnContainer"
+                        class="buyFullVersionBtnContainer"
+                    >
+                        <button
+                            id="buyFullVersionBtn"
+                            class="buyFullVersionBtn"
+                        >
+                            Buy Full Version - $2.99
+                        </button>
+                    </div>
+
+                    <p>
+                        After you have paid, please refresh this page to
+                        activate the full version.
+                    </p>
+                </div>
+            </div>
+            <div class="afterPurchaseRefreshContainer">
+                <p>
+                    After you have paid, please refresh this page to activate
+                    the full version.
+                </p>
+                <button id="afterPurchaseRefreshBtn" class="addNoteBtn">
+                    Refresh
+                </button>
+                <button id="refreshContainerCloseBtn" class="closeBtn">
+                    ✕
+                </button>
+            </div>
+
+            <div class="placeholder-flex-box"></div>
+
+            <div class="bottomContainer">
+                <p>
+                    Please leave a review on the Chrome Store in
+                    <a
+                        href="https://chromewebstore.google.com/detail/notepop/lmafejapjjjbkjhdocgppgpkgfobecbp"
+                        target="_blank"
+                        >here</a
+                    >
+                </p>
+
+                <p>
+                    You can reach us via email:
+                    <a href="mailto:contact.notepop@gmail.com"
+                        >contact.notepop@gmail.com</a
+                    >
+                </p>
+
+                <p>Copyright © 2023 All Rights Served.</p>
+            </div>
+        </div>
+    </body>
+
+    <script src="options.js"></script>
+</html>

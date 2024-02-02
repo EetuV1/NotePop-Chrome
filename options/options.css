@@ -1,0 +1,614 @@
+/* --------------   General     --------------------- */
+
+* {
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    background-image: linear-gradient(rgba(26, 26, 26, 0.845), #1c1c1c71);
+    color: rgba(239, 239, 239, 0.845);
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-bottom: 0;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --------------   NotePop Logo     --------------------- */
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 28px;
+}
+
+.logo {
+    width: 286px;
+    height: 98.8px;
+}
+
+/* --------------   Add a New Note -section     --------------------- */
+
+.addNewNote {
+    padding-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+/*---   Text Fields     ---*/
+
+.form {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+}
+
+.form-field {
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 400;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    color: white;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+        color: transparent;
+    }
+
+    &:placeholder-shown ~ .form-label {
+        cursor: text;
+        top: 20px;
+    }
+}
+
+.form-label {
+    transition: 0.2s;
+    font-size: 19px;
+    color: rgba(239, 239, 239, 0.845);
+}
+
+.form-field:focus {
+    /* when clicked on -> */
+    ~ .form-label {
+        transition: 0.2s;
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+    }
+    font-size: 22px;
+    font-weight: 400;
+    border-width: 3px;
+    border-image: linear-gradient(
+        to right,
+        rgb(69, 69, 224),
+        rgba(69, 69, 224, 0.524)
+    );
+    border-image-slice: 1;
+}
+
+/* reset input */
+.form-field {
+    &:required,
+    &:invalid {
+        box-shadow: none;
+    }
+}
+
+.form-keyword {
+    width: 250px;
+}
+
+.form-note {
+    width: 400px;
+}
+
+/*---   Check Boxes ---*/
+
+.form-checkboxes {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.showOnce-div,
+.counter-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding: 4px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: white;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.35em;
+    transform: translateY(-0.075em);
+    margin-right: 10px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+    background-color: CanvasText;
+    transform-origin: bottom left;
+    clip-path: polygon(10% 40%, 0 60%, 50% 100%, 100% 20%, 80% 0%, 40% 60%);
+    background-color: rgb(69, 69, 224);
+}
+
+input[type="checkbox"]:disabled {
+    background-color: rgba(128, 128, 128, 0.3);
+    color: rgba(128, 128, 128, 0.3);
+    cursor: not-allowed;
+}
+
+/* When moving with tab*/
+input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px 0.5rem rgba(0, 123, 255, 0.25);
+}
+
+/* Add Note div*/
+.submit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 3rem;
+    margin-right: 20%;
+}
+
+/* --------------   Buttons    ---------------------*/
+
+/*---   Add Note Button  ---*/
+
+.addNoteBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: rgb(69, 69, 224);
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+.addNoteBtn:hover {
+    background-color: rgba(69, 69, 224, 0.524);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* When moving with tab*/
+.addNoteBtn:focus {
+    outline: none;
+    box-shadow: 0 0 5px 0.3rem rgba(0, 123, 255, 0.25);
+}
+
+/*---   Delete Button  ---*/
+
+li button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.107);
+    color: rgba(239, 239, 239, 0.845);
+    transition: background-color 0.3s, border-color 0.3s;
+    height: 40px;
+    width: 86px;
+}
+
+li button:hover {
+    background-color: rgba(219, 0, 0, 0.524);
+    color: #fff;
+    border-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* When moving with tab*/
+li button:focus {
+    outline: none;
+    box-shadow: 0 0 5px 0.3rem rgba(0, 123, 255, 0.25);
+}
+
+/* --------------   All notes -section   ---------------------*/
+
+.allNotesContainer {
+    padding-bottom: 1rem;
+}
+
+.allNotesTitle {
+    padding-top: 1rem;
+}
+
+/* For 'No Notes Added...' */
+#allNotesListElement {
+    margin: 2rem;
+}
+
+/*-----   All Notes  -----*/
+
+/* Reverse list */
+ul {
+    display: flex;
+    flex-direction: column-reverse;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* listItem (without buttons)*/
+ul li {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px inset white;
+    align-items: self-end;
+}
+
+ul div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 10;
+    margin: 0.3rem;
+    padding: 0;
+}
+
+/*-----   One Note Item  -----*/
+
+.keywordDiv {
+    width: 15%;
+    align-items: center;
+}
+
+.noteDiv {
+    width: 30%;
+    align-items: center;
+}
+
+.showOnceDiv {
+    max-width: 200px;
+    align-items: center;
+}
+
+.counterDiv {
+    max-width: 200px;
+    align-items: center;
+}
+
+.counterDiv h2 {
+    width: 26px;
+}
+
+.deleteBtnDiv {
+    flex-grow: 0;
+    align-items: center;
+    right: 0;
+}
+
+div h3 {
+    color: rgb(182, 182, 182);
+    padding-right: 0.5rem;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+div h2 {
+    flex-grow: 4;
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+/* --------------   getFullVersionContainer  ---------------------*/
+
+.getFullVersionContainer {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.getFullVersionColorContainer {
+    display: flex;
+    width: 550px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(69, 69, 224, 0.257);
+    border-radius: 30px;
+    border: 1px solid rgb(69, 69, 224);
+}
+
+.getFullVersionText {
+    color: rgb(255, 255, 255);
+    font-size: 22px;
+    font-weight: 400;
+    text-align: center;
+    padding: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.getFullVersionTextPoints {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 300;
+    text-align: center;
+    margin: 10px;
+}
+
+.getFullVersionColorContainer p {
+    font-size: 12px;
+    font-weight: 300;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.buyFullVersionBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.718);
+    cursor: pointer;
+    background-color: rgb(69, 69, 224);
+    color: #ffffff;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.buyFullVersionBtn:hover {
+    background-color: rgba(69, 69, 224, 0.524);
+    border: 1px solid rgba(69, 69, 224, 0.524);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* When moving with tab*/
+.buyFullVersionBtn:focus {
+    outline: none;
+    box-shadow: 0 0 5px 0.3rem rgba(0, 123, 255, 0.25);
+}
+
+/* Stripe Link */
+.getFullVersionTextPoints a {
+    color: rgb(255, 255, 255);
+}
+
+.getFullVersionTextPoints a:hover {
+    color: rgba(69, 69, 224);
+}
+
+.getFullVersionTextPoints a:focus {
+    outline: none;
+    box-shadow: 0 0 5px 0.3rem rgba(0, 123, 255, 0.25);
+}
+
+/* --------------   Bottom Container  ---------------------*/
+
+.bottomContainer {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgb(239, 239, 239, 0.441);
+    background-color: rgba(10, 10, 10, 0.808);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+@media (max-height: 800px) {
+    .bottomContainer {
+        position: static;
+        background-color: inherit;
+        margin-top: 100px;
+    }
+}
+
+.bottomContainer p {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.bottomContainer a {
+    margin-right: 20px;
+    font-size: 12px;
+    font-weight: 300;
+    color: white;
+}
+
+.bottomContainer a:hover {
+    color: rgba(69, 69, 224);
+}
+
+.bottomContainer a:focus {
+    outline: none;
+    box-shadow: 0 0 5px 0.3rem rgba(0, 123, 255, 0.25);
+}
+
+.afterPurchaseRefreshContainer {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(21, 20, 53);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.718);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.afterPurchaseRefreshContainer p {
+    margin-left: 40px;
+    margin-right: 40px;
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.afterPurchaseRefreshContainer button {
+    margin-bottom: 20px;
+}
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    color: white;
+    width: 30px;
+    height: 30px;
+}
+
+.closeBtn:hover {
+    color: rgba(69, 69, 224);
+}
+
+/* --------------   For Smaller Screen  ---------------------*/
+
+@media only screen and (max-width: 1000px) {
+    /*---   Add a New Note -section ---*/
+    .form-items {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .submit-form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-right: 18px;
+    }
+
+    .form-keyword {
+        width: 100%;
+    }
+
+    .form-note {
+        width: 100%;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    /*---   All Notes -section  ---*/
+
+    #allNotesListElement {
+        margin: 0;
+        margin-top: 30px;
+    }
+
+    ul div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .keywordDiv {
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .noteDiv {
+        width: 100%;
+        flex-direction: row;
+        margin-top: 15px;
+    }
+
+    .checkboxDiv {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        justify-content: space-between;
+    }
+
+    .counterDiv {
+        width: 30%;
+        flex-direction: row;
+    }
+
+    .showOnceDiv {
+        width: 30%;
+        flex-direction: row;
+        margin-left: 0;
+    }
+
+    .checkboxDiv h3 {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+
+    .checkboxDiv h2 {
+        margin: 0;
+        padding: 0;
+        padding-left: 0.5rem;
+        text-align: left;
+    }
+
+    .deleteBtnDiv {
+        flex-grow: 0;
+        align-items: flex-end;
+    }
+
+    .getFullVersionColorContainer {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
